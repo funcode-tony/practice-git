@@ -3,21 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Ncfta</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Microsoft JhengHei, sans-serif;
+    }
+
+    .container {
+      width: 100%;
+    }
+
+    .banner > img {
+      width: 100%;
+      height: auto;
+    }
+
+    .title {
+      color: #5E4B43;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: .25rem;
+      padding: 0 1rem;
+    }
+
+    .links-wrap {
+      padding: 4rem 0 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 130px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 1.5rem;
+      color: rgb(246, 246, 246);
+      background-color: #3E7939;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .btn:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+
+    @media screen and (min-width: 400px) {
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>first commit</p>
-  <h2>hello world</h2>
-  <h3>third time push</h3>
-  <h3>testing how to fetch from remote and edit local</h3>
+  <div class="container">
+    <div class="banner">
+      <img src="./banner.jpg" alt="banner">
+    </div>
+    <div class="title">導覽點01:展覽介紹</div>
+    <div class="links-wrap">
+      <button class="btn">華語</button>
+      <button class="btn">臺灣台語</button>
+      <button class="btn">臺灣客語</button>
+      <button class="btn">英語</button>
+      <button class="btn">臺灣手語</button>
+    </div>
+  </div>
   
   <script>
-    function a1 () {
-      console.log('the first feature');
-    }
-    function a2 () {
-      console.log('the second feature');
-    }
+    
   </script>
 </body>
 </html>
