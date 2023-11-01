@@ -95,7 +95,8 @@
    
     Object.keys(langs).forEach(lang => {
       if (!fakeData[lang]) return; 
-      linksContainer.innerHTML += `<a class="btn" href=${fakeData[lang]}>${langs[lang]}</a>`
+      const link = fakeData[lang].slice(0, 29) + "_popup" + fakeData[lang].slice(29)
+      linksContainer.innerHTML += `<a class="btn" href=${link}>${langs[lang]}</a>`
     })
   </script>
 </body>
