@@ -48,6 +48,8 @@
       background-color: #3E7939;
       font-size: 1.2rem;
       cursor: pointer;
+      text-align: center;
+      text-decoration: none;
     }
 
     .btn:not(:first-child) {
@@ -69,16 +71,32 @@
     </div>
     <div class="title">導覽點01:展覽介紹</div>
     <div class="links-wrap">
-      <button class="btn">華語</button>
-      <button class="btn">臺灣台語</button>
-      <button class="btn">臺灣客語</button>
-      <button class="btn">英語</button>
-      <button class="btn">臺灣手語</button>
     </div>
   </div>
   
   <script>
-    
+    const linksContainer = document.querySelector('.links-wrap')
+    const btns = document.querySelectorAll('.btn')
+    const langs = {
+      "chinese": "華語",
+      "taiwanese": "臺灣台語",
+      "hakka": "臺灣客語",
+      "en": "英語",
+      'sign': '臺灣手語',
+    }
+    // 假設從後端回傳的資料
+    const fakeData = {
+      'sign': '',
+      "hakka": "https://www.youtube.com/watch?v=YQvrBoJw1IM",
+      "en": "https://www.youtube.com/watch?v=1hvscCHGR4g",
+      "chinese": "https://www.youtube.com/watch?v=nUkBP5Y1C60",
+      "taiwanese": "https://www.youtube.com/watch?v=LvReIzX5GK8"
+    }
+   
+    Object.keys(langs).forEach(lang => {
+      if (!fakeData[lang]) return; 
+      linksContainer.innerHTML += `<a class="btn" href=${fakeData[lang]}>${langs[lang]}</a>`
+    })
   </script>
 </body>
 </html>
