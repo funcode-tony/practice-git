@@ -69,7 +69,7 @@
     <div class="banner">
       <img src="./banner.jpg" alt="banner">
     </div>
-    <div class="title">導覽點01:展覽介紹</div>
+    <div class="title"></div>
     <div class="links-wrap">
     </div>
   </div>
@@ -83,20 +83,22 @@
       "hakka": "臺灣客語",
       "en": "英語",
       'sign': '臺灣手語',
-    }
-    // 假設從後端回傳的資料
-    const fakeData = {
-      'sign': '',
-      "hakka": "https://www.youtube.com/watch?v=YQvrBoJw1IM",
-      "en": "https://www.youtube.com/watch?v=1hvscCHGR4g",
-      "chinese": "https://www.youtube.com/watch?v=nUkBP5Y1C60",
-      "taiwanese": "https://www.youtube.com/watch?v=LvReIzX5GK8"
-    }
-   
-    Object.keys(langs).forEach(lang => {
-      if (!fakeData[lang]) return; 
-      const link = fakeData[lang].slice(0, 29) + "_popup" + fakeData[lang].slice(29)
-      linksContainer.innerHTML += `<a class="btn" href=${link}>${langs[lang]}</a>`
+    }  
+    const urlParams = new URLSearchParams(window.location.search)
+    // T01 ~ T15 是可拿到資料的 ID
+    fetch(`https://ncftaguidedtour-backend.azurewebsites.net/api/data?id=${urlParams.get('id')}`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data.title) {
+        document.querySelector('.title').innerHTML = '尚無此展覽點的導覽影片'
+        return;
+      }
+      document.querySelector('.title').innerHTML = data.title
+      Object.keys(langs).forEach(lang => {
+        if (!data[lang]) return; 
+        const link = data[lang].slice(0, 29) + "_popup" + data[lang].slice(29)
+        linksContainer.innerHTML += `<a class="btn" href=${link}>${langs[lang]}</a>`
+      })
     })
   </script>
 </body>
