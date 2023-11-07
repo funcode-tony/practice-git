@@ -73,17 +73,19 @@
     }
 
     .close-btn {
-      width: 30px;
-      height: 30px;
+      width: 65px;
+      height: 65px;
+      background-color: #b2b3b2;
+      border-radius: 50%;
+      font-size: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
       position: fixed;
-      top: 20px;
+      top: 8px;
       right: 20px;
-      color: rgb(88, 88, 88);
+      color: #383434;
       border: none;
-      background-color: transparent;
       box-shadow: 0 4px 12px 1px rgba(0, 0, 0, 0.217);
       cursor: pointer;
       display: none;
@@ -117,7 +119,6 @@
     document.querySelector('.close-btn').addEventListener('click',() => {
       document.querySelector('iframe').style.display = 'none'
       document.querySelector('.close-btn').style.display = 'none'
-      console.log(23423);
     })
 
   </script>
