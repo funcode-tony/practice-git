@@ -62,44 +62,64 @@
         margin: 0 auto;
       }
     }
+
+    iframe {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .close-btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      color: rgb(88, 88, 88);
+      border: none;
+      background-color: transparent;
+      box-shadow: 0 4px 12px 1px rgba(0, 0, 0, 0.217);
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
+  <button class="close-btn">
+    x
+  </button>
+  <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+  </iframe>
   <div class="container">
     <div class="banner">
       <img src="./banner.jpg" alt="banner">
     </div>
     <div class="title"></div>
     <div class="links-wrap">
+      <button class="btn">華語</button>
     </div>
   </div>
   
   <script>
     const linksContainer = document.querySelector('.links-wrap')
-    const btns = document.querySelectorAll('.btn')
-    const langs = {
-      "chinese": "華語",
-      "taiwanese": "臺灣台語",
-      "hakka": "臺灣客語",
-      "en": "英語",
-      'sign': '臺灣手語',
-    }  
-    const urlParams = new URLSearchParams(window.location.search)
-    // T01 ~ T15 是可拿到資料的 ID
-    fetch(`https://ncftaguidedtour-backend.azurewebsites.net/api/data?id=${urlParams.get('id')}`)
-    .then(res => res.json())
-    .then(data => {
-      if (!data.title) {
-        document.querySelector('.title').innerHTML = '尚無此展覽點的導覽影片'
-        return;
-      }
-      document.querySelector('.title').innerHTML = data.title
-      Object.keys(langs).forEach(lang => {
-        if (!data[lang]) return; 
-        const link = data[lang].slice(0, 29) + "_popup" + data[lang].slice(29)
-        linksContainer.innerHTML += `<a class="btn" href=${link}>${langs[lang]}</a>`
-      })
+    const btn = document.querySelector('.btn')
+    btn.addEventListener('click', () => {
+      document.querySelector('iframe').style.display = 'block'
+      document.querySelector('.close-btn').style.display = 'block'
     })
+    document.querySelector('.close-btn').addEventListener('click',() => {
+      document.querySelector('iframe').style.display = 'none'
+      document.querySelector('.close-btn').style.display = 'none'
+      console.log(23423);
+    })
+
   </script>
 </body>
 </html>
